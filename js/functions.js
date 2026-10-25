@@ -11,4 +11,24 @@ const isPalindrome = function(string) {
   return normalized === reversed;
 };
 
-export { getStringLength, isPalindrome };
+
+const checkMeeting = function (startWork, endWork, startMeeting, duration) {
+  const timeToMinutes = function (time) {
+    const parts = time.split(':');
+    const hours = Number(parts[0]);
+    const minutes = Number(parts[1]);
+
+    return hours * 60 + minutes;
+  };
+
+  const startWorkMinutes = timeToMinutes(startWork);
+  const endWorkMinutes = timeToMinutes(endWork);
+  const startMeetingMinutes = timeToMinutes(startMeeting);
+  const endMeetingMinutes = startMeetingMinutes + duration;
+
+  return startMeetingMinutes >= startWorkMinutes &&
+    endMeetingMinutes <= endWorkMinutes;
+};
+
+
+export { getStringLength, isPalindrome, checkMeeting };
